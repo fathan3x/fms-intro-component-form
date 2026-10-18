@@ -257,13 +257,14 @@ export function App() {
               />
               <form.Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
-                children={() => (
+                children={([canSubmit, isSubmitting]) => (
                   <>
                     <button
+                      disabled={!canSubmit || isSubmitting}
                       type="submit"
                       className={cn(
                         style["bg-green-400"],
-                        "p-4 rounded-lg flex items-center font-bold justify-center w-full text-white shadow-[0px_4px_0px_0px_rgba(0,0,0,0.3 )] cursor-pointer disabled:opacity-50",
+                        "p-4 rounded-lg flex items-center font-bold justify-center w-full text-white shadow-[0px_4px_0px_0px_rgba(0,0,0,0.3 )] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
                       )}
                     >
                       <p>CLAIM YOUR FREE TRIAL</p>
